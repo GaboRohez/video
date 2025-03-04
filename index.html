@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video de YouTube</title>
+    <title>Video sin YouTube</title>
     <style>
         body {
             margin: 0;
@@ -15,61 +15,17 @@
             background-color: #000;
             overflow: hidden;
         }
-        .video-container {
-            position: relative;
+        video {
             width: 100%;
             height: 100vh;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            object-fit: cover;
         }
     </style>
-    <script>
-        function onYouTubeIframeAPIReady() {
-            var player = new YT.Player('ytplayer', {
-                events: {
-                    'onStateChange': function(event) {
-                        if (event.data === 0) { // 0 significa que el video terminó
-                            player.seekTo(0); // Reinicia el video desde el principio
-                            player.playVideo(); // Lo reproduce automáticamente
-                        }
-                    }
-                }
-            });
-        }
-
-        // Ocultar botones adicionales con CSS
-        function removeYouTubeUI() {
-            let css = `
-                ytd-watch-metadata, ytd-menu-renderer, ytd-action-button-renderer, 
-                ytd-segmented-like-dislike-button-view-model, ytd-live-chat-frame {
-                    display: none !important;
-                }
-            `;
-            let style = document.createElement('style');
-            style.type = 'text/css';
-            style.appendChild(document.createTextNode(css));
-            document.head.appendChild(style);
-        }
-
-        // Esperar a que el iframe esté listo para aplicar los cambios
-        window.onload = function() {
-            setTimeout(removeYouTubeUI, 3000);
-        };
-    </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <div class="video-container">
-        <iframe id="ytplayer" type="text/html" width="100%" height="100%"
-            src="https://www.youtube.com/embed/XcIMyw2oJv4?autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&fs=0&disablekb=1&showinfo=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&autohide=1"
-            frameborder="0" allow="autoplay">
-        </iframe>
-    </div>
+    <video id="customPlayer" autoplay loop muted>
+        <source src="https://rsqa.pagosapp.com.mx/0303-02_1741044084523.mp4">
+        Tu navegador no soporta el tag de video.
+    </video>
 </body>
 </html>
