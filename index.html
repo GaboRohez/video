@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video de YouTube</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video de YouTube</title>
+<style>
         body {
             margin: 0;
             padding: 0;
@@ -43,15 +43,11 @@
             height: 15%; /* Cubre solo el 15% inferior del video */
             background: transparent;
         }
-    </style>
-    <script>
-        var player;
+</style>
+<script>
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('ytplayer', {
+            var player = new YT.Player('ytplayer', {
                 events: {
-                    'onReady': function(event) {
-                        event.target.playVideo(); // Inicia la reproducción automáticamente
-                    },
                     'onStateChange': function(event) {
                         if (event.data === 0) { // 0 significa que el video terminó
                             player.seekTo(0); // Reinicia el video desde el principio
@@ -61,16 +57,17 @@
                 }
             });
         }
-    </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <div class="video-container">
-        <iframe id="ytplayer" type="text/html" width="100%" height="100%"
-src="https://www.youtube.com/embed/XcIMyw2oJv4?autoplay=1&controls=0&modestbranding=1&rel=0&fs=0&disablekb=1&showinfo=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&enablejsapi=1"            frameborder="0" allow="autoplay">
-        </iframe>
-        <div class="overlay-top"></div>
-        <div class="overlay-bottom"></div>
-    </div>
+<div class="video-container">
+<iframe id="ytplayer" type="text/html" width="100%" height="100%"
+            src="https://www.youtube.com/embed/XcIMyw2oJv4?autoplay=1&controls=0&modestbranding=1&rel=0&fs=0&disablekb=1&showinfo=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&enablejsapi=1"
+            frameborder="0" allow="autoplay">
+</iframe>
+<div class="overlay-top"></div>
+<div class="overlay-bottom"></div>
+</div>
 </body>
 </html>
